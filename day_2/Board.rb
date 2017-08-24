@@ -3,27 +3,23 @@ class Board
     @position = pos
   end
 
-  # (-1, 0)
   def up
-    @position.decrementX
+    @position.move(-1, 0)
     #print "DEBUG: Up ", @position.get, "\n"
   end
 
-  # (+1, 0)
   def down
-    @position.incrementX
+    @position.move(+1, 0)
     #print "DEBUG: Down ", @position.get, "\n"
   end
 
-  # (0, -1)
   def left
-    @position.decrementY
+    @position.move(0, -1)
     #print "DEBUG: Left ", @position.get, "\n"
   end
 
-  # (0, +1)
   def right
-    @position.incrementY
+    @position.move(0, +1)
     #print "DEBUG: Right ", @position.get, "\n"
   end
 
