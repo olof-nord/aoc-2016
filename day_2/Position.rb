@@ -1,18 +1,31 @@
 class Position
+  attr_reader :coordinates
+
   def initialize(x=1, y=1)
-    @x = x
-    @y = y
+    @coordinates = [x, y]
+  end
+
+  def up
+    move(-1, 0)
+  end
+
+  def down
+    move(1, 0)
+  end
+
+  def left
+    move(0, -1)
+  end
+
+  def right
+    move(0, 1)
   end
 
   def move(x, y)
-    if inrange(@x + x, @y + y)
-      @x += x
-      @y += y
+    if inrange(self.coordinates[0] + x, self.coordinates[1] + y)
+      self.coordinates[0] += x
+      self.coordinates[1] += y
     end
-  end
-
-  def get
-    return @x, @y
   end
 
   def inrange(x, y)

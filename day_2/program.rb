@@ -4,39 +4,38 @@
 # https://adventofcode.com/2016/day/2
 
 require "./Position.rb"
-require "./Board.rb"
 
-game = Board.new(Position.new())
+pos = Position.new()
 
 puts "AoC Day 2: Bathroom Security"
-print "Starting position: ", game.get,"\n"
+print "Starting position: ", pos.coordinates,"\n"
 
 # ULL
-game.up
-game.left
-game.left
-print "First position: ", game.get,"\n"
+pos.up
+pos.left
+pos.left
+print "First position: ", pos.coordinates,"\n"
 
 # RRDDD
-game.right
-game.right
-game.down
-game.down
-game.down
-print "Second position: ", game.get,"\n"
+pos.right
+pos.right
+pos.down
+pos.down
+pos.down
+print "Second position: ", pos.coordinates,"\n"
 
 # LURDL
-game.left
-game.up
-game.right
-game.down
-game.left
-print "Third position: ", game.get,"\n"
+pos.left
+pos.up
+pos.right
+pos.down
+pos.left
+print "Third position: ", pos.coordinates,"\n"
 
 # UUUUD
-game.up
-game.up
-game.up
-game.up
-game.down
-print "Fourth position: ", game.get,"\n"
+pos.up
+pos.up
+pos.up
+pos.up
+pos.down
+print "Fourth position: ", pos.coordinates,"\n"
