@@ -1,5 +1,5 @@
-class Position
-  attr_reader :coordinates, :part
+class Game
+  attr_reader :coordinates, :valid_positions, :part
 
   def initialize(part)
     if part == 1
@@ -40,7 +40,7 @@ class Position
   end
 
   def to_s
-    @valid_positions[self.coordinates]
+    self.valid_positions[self.coordinates]
   end
 
   def move(x, y)
@@ -51,7 +51,7 @@ class Position
   end
 
   def available(x, y)
-    @valid_positions.include? [x, y]
+    self.valid_positions.include? [x, y]
   end
 
   private :move, :available

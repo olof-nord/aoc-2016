@@ -9,23 +9,23 @@ if !ARGV.empty?
   part = ARGV[0].to_i
 end
 
-require "./Position.rb"
+require "./Game.rb"
 results = ""
-pos = Position.new(part)
+game = Game.new(part)
 
 File.foreach('./inputs.txt') do |line|
   line.each_char do |char|
     case char
     when "U"
-      pos.up
+      game.up
     when "D"
-      pos.down
+      game.down
     when "R"
-      pos.right
+      game.right
     when "L"
-      pos.left
+      game.left
     else
-      results.concat(pos.to_s)
+      results.concat(game.to_s)
     end
   end
 end
