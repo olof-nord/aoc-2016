@@ -1,5 +1,6 @@
 class Game
-  attr_reader :coordinates, :valid_positions, :part
+  attr_reader :valid_positions, :part
+  attr_accessor :coordinates
 
   def initialize(part)
     if part == 1
@@ -44,15 +45,11 @@ class Game
   end
 
   def move(x, y)
-    if available(self.coordinates[0] + x, self.coordinates[1] + y)
-      self.coordinates[0] += x
-      self.coordinates[1] += y
+    next_position = [self.coordinates[0] + x, self.coordinates[1] + y]
+    if self.valid_positions.include? next_position
+      self.coordinates = next_position
     end
   end
 
-  def available(x, y)
-    self.valid_positions.include? [x, y]
-  end
-
-  private :move, :available
+  private :move
 end
