@@ -1,16 +1,16 @@
 class Position
-  attr_reader :coordinates
+  attr_reader :coordinates, :part
 
-  def initialize(x=1, y=1)
-    if $part == 1
-      @coordinates = [x, y]
+  def initialize(part)
+    if part == 1
+      @coordinates = [1, 1]
 
       @valid_positions = {
         [0,0] => "1", [0,1] => "2", [0,2] => "3",
         [1,0] => "4", [1,1] => "5", [1,2] => "6",
         [2,0] => "7", [2,1] => "8", [2,2] => "9"
       }
-    elsif $part == 2
+    elsif part == 2
       @coordinates = [2, 0]
 
       @valid_positions = {
@@ -44,30 +44,15 @@ class Position
   end
 
   def move(x, y)
-    if $part == 1
-      if inrange(self.coordinates[0] + x, self.coordinates[1] + y)
-        self.coordinates[0] += x
-        self.coordinates[1] += y
-      end
-    elsif $part == 2
-      if available(self.coordinates[0] + x, self.coordinates[1] + y)
-        self.coordinates[0] += x
-        self.coordinates[1] += y
-      end
-    end
-  end
-
-  def inrange(x, y)
-    if ((0..2) === x && (0..2) === y)
-      return true
-    else
-      return false
+    if available(self.coordinates[0] + x, self.coordinates[1] + y)
+      self.coordinates[0] += x
+      self.coordinates[1] += y
     end
   end
 
   def available(x, y)
-    return @valid_positions.include? [x, y]
+    @valid_positions.include? [x, y]
   end
 
-  private :inrange, :move, :available
+  private :move, :available
 end
